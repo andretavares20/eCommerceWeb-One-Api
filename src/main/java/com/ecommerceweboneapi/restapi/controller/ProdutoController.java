@@ -3,6 +3,7 @@ package com.ecommerceweboneapi.restapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import com.ecommerceweboneapi.restapi.repositories.ProdutoRepository;
 
 @RestController
 @RequestMapping("/produto")
+@CrossOrigin
 public class ProdutoController {
     
     @Autowired
@@ -27,8 +29,9 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public void postProduto(@RequestBody Produto produto){
+    public Produto postProduto(@RequestBody Produto produto){
         produtoRepository.save(produto);
+        return produto;
     }
 
     @PutMapping
