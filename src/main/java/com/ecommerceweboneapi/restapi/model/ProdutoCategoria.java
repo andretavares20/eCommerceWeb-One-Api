@@ -17,6 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,13 +39,17 @@ public class ProdutoCategoria implements Serializable {
     @Column(nullable = false)
     private String nome;
 
-    @OneToMany
-    @JoinColumn(name = "categoria_id") 
+    @OneToMany(mappedBy = "produtoCategoria")
+    @JsonBackReference
     private List<Produto> produtos;
 
     public ProdutoCategoria(){
         
-    }   
+    } 
+    
+    public ProdutoCategoria(Long id){
+        this.id = id;
+    }
 
     public ProdutoCategoria(Long id,String nome,List<Produto> produtos){
         this.id = id;

@@ -34,6 +34,9 @@ public class Produto implements Serializable {
     @Column(nullable = false)
     private String descricao;
 
+    @Column(nullable = true)
+    private String descricao_resumo;
+
     @Column(nullable = false)
     private String imagem;
 
@@ -52,9 +55,14 @@ public class Produto implements Serializable {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
+        this.descricao_resumo = descricao.substring(0,155);
         this.imagem = imagem;
         this.valor = valor;
         this.produtoCategoria = produtoCategoria;
+    }
+
+    public void setDescricaoResumo(String descricao){
+        this.descricao_resumo = descricao.substring(0,155);
     }
 
 

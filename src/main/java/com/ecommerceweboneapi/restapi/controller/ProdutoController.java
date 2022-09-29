@@ -3,6 +3,8 @@ package com.ecommerceweboneapi.restapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,12 +26,19 @@ public class ProdutoController {
     private ProdutoRepository produtoRepository;
 
     @GetMapping
-    public List<Produto> listProduto(){
-        return produtoRepository.findAll();
+    public ResponseEntity<List<Produto>> listProduto(){
+        return ResponseEntity.status(HttpStatus.OK).body(produtoRepository.findAll());
     }
 
     @PostMapping
     public Produto postProduto(@RequestBody Produto produto){
+        
+        if(produto.getDescricao().length()>155){
+            produto.setDescricaoResumo(produto.getDescricao());
+        }else{
+            produto.setDescricao_resumo(produto.getDescricao());
+        }
+
         produtoRepository.save(produto);
         return produto;
     }
