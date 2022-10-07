@@ -27,7 +27,9 @@ public class ProdutoController {
 
     @GetMapping
     public ResponseEntity<List<Produto>> listProduto(){
-        return ResponseEntity.status(HttpStatus.OK).body(produtoRepository.findAll());
+
+        List<Produto> produto = produtoRepository.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(produto);
     }
 
     @PostMapping

@@ -1,14 +1,10 @@
 package com.ecommerceweboneapi.restapi.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,9 +21,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "PRODUTO_CATEGORIA")
-public class ProdutoCategoria implements Serializable {
-
+@Table(name = "PRODUTO_SUBCATEGORIA")
+public class ProdutoSubCategoria implements Serializable {
+    
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -39,21 +34,22 @@ public class ProdutoCategoria implements Serializable {
     @Column(nullable = false)
     private String nome;
 
-    @OneToMany(mappedBy = "produtoCategoria")
+    @OneToMany(mappedBy = "produtoSubCategoria")
     @JsonBackReference
-    private List<ProdutoSubCategoria> produtoSubCategorias;
+    private List<Produto> produtos;
 
-    public ProdutoCategoria(){
-        
-    } 
-    
-    public ProdutoCategoria(Long id){
-        this.id = id;
+    @ManyToOne
+    @JoinColumn(name="categoria_id", nullable=false)
+    private ProdutoCategoria produtoCategoria;
+
+    public ProdutoSubCategoria(){
+
     }
 
-    public ProdutoCategoria(Long id,String nome,List<ProdutoSubCategoria> produtoSubCategorias){
+    public ProdutoSubCategoria(Long id, String nome, ProdutoCategoria produtoCategoria){
         this.id = id;
         this.nome = nome;
-        this.produtoSubCategorias = produtoSubCategorias;
+        this.produtoCategoria = produtoCategoria;
     }
+
 }
