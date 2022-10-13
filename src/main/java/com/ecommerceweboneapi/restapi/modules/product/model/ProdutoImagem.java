@@ -1,4 +1,4 @@
-package com.ecommerceweboneapi.restapi.model;
+package com.ecommerceweboneapi.restapi.modules.product.model;
 
 import java.io.Serializable;
 

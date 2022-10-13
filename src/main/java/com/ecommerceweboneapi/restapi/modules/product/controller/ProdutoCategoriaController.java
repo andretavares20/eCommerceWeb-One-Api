@@ -1,4 +1,4 @@
-package com.ecommerceweboneapi.restapi.controller;
+package com.ecommerceweboneapi.restapi.modules.product.controller;
 
 import java.util.List;
 
@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ecommerceweboneapi.restapi.model.Produto;
-import com.ecommerceweboneapi.restapi.model.ProdutoCategoria;
-import com.ecommerceweboneapi.restapi.repositories.ProdutoCategoriaRepository;
+import com.ecommerceweboneapi.restapi.modules.product.model.ProdutoCategoria;
+import com.ecommerceweboneapi.restapi.modules.product.repositories.ProdutoCategoriaRepository;
+
+
+
+
 
 @RestController
 @RequestMapping("/produtoCategoria")

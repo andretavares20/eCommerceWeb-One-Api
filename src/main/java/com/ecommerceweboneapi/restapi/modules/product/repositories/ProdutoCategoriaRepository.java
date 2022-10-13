@@ -1,11 +1,11 @@
-package com.ecommerceweboneapi.restapi.repositories;
+package com.ecommerceweboneapi.restapi.modules.product.repositories;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.ecommerceweboneapi.restapi.model.ProdutoCategoria;
+import com.ecommerceweboneapi.restapi.modules.product.model.ProdutoCategoria;
 
 public interface ProdutoCategoriaRepository extends JpaRepository<ProdutoCategoria,Long> {
 

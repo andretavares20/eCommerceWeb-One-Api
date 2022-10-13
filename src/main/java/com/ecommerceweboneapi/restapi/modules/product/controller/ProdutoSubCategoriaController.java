@@ -1,4 +1,4 @@
-package com.ecommerceweboneapi.restapi.controller;
+package com.ecommerceweboneapi.restapi.modules.product.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ecommerceweboneapi.restapi.model.ProdutoSubCategoria;
-import com.ecommerceweboneapi.restapi.repositories.ProdutoSubCategoriaRepository;
+import com.ecommerceweboneapi.restapi.modules.product.model.ProdutoSubCategoria;
+import com.ecommerceweboneapi.restapi.modules.product.repositories.ProdutoSubCategoriaRepository;
 
 @RestController
 @RequestMapping("/produtoSubCategoria")

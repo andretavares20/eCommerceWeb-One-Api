@@ -1,8 +1,9 @@
-package com.ecommerceweboneapi.restapi.controller;
+package com.ecommerceweboneapi.restapi.modules.product.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ecommerceweboneapi.restapi.model.Produto;
-import com.ecommerceweboneapi.restapi.repositories.ProdutoRepository;
+import com.ecommerceweboneapi.restapi.modules.product.model.Produto;
+import com.ecommerceweboneapi.restapi.modules.product.repositories.ProdutoRepository;
 
 @RestController
 @RequestMapping("/produto")
@@ -28,7 +29,7 @@ public class ProdutoController {
     @GetMapping
     public ResponseEntity<List<Produto>> listProduto(){
 
-        List<Produto> produto = produtoRepository.findAll();
+        List<Produto> produto = produtoRepository.findAll(Sort.by(Sort.Direction.DESC,"id"));
         return ResponseEntity.status(HttpStatus.OK).body(produto);
     }
 

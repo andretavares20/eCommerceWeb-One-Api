@@ -1,13 +1,13 @@
-package com.ecommerceweboneapi.restapi.service.impl;
+package com.ecommerceweboneapi.restapi.modules.product.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ecommerceweboneapi.restapi.model.ProdutoCategoria;
-import com.ecommerceweboneapi.restapi.repositories.ProdutoCategoriaRepository;
-import com.ecommerceweboneapi.restapi.service.ProdutoCategoriaService;
+import com.ecommerceweboneapi.restapi.modules.product.model.ProdutoCategoria;
+import com.ecommerceweboneapi.restapi.modules.product.repositories.ProdutoCategoriaRepository;
+import com.ecommerceweboneapi.restapi.modules.product.service.ProdutoCategoriaService;
 
 @Service
 public class ProdutoCategoriaServiceImpl implements ProdutoCategoriaService {
