@@ -1,25 +1,36 @@
-// package com.ecommerceweboneapi.restapi.modules.user.service;
+package com.ecommerceweboneapi.restapi.modules.user.service;
 
-// import org.apache.catalina.User;
-// import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
-// public class CreateUserService {
+import com.ecommerceweboneapi.restapi.modules.user.model.User;
+import com.ecommerceweboneapi.restapi.modules.user.repositories.UserRepository;
+
+@Service
+public class CreateUserService {
     
-//     @Autowired
-//     UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
 
-//     public User execute(User user){
+    private BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 
-//         User existsUser = userRepository.findByUsername(user.getUsername());
+    public User execute(User user){
 
-//         if(existsUser != null){
-//             throw new Error("User already exists!");
-//         }
+        User existsUser = userRepository.findByUsername(user.getUsername());
 
-//         User createdUser = userRepository.save(user);
+        if(existsUser != null){
+            throw new Error("User already exists!");
+        }
 
-//         return createdUser;
+        user.setPassword(passwordEncoder().encode(user.getPassword()));
 
-//     }
+        User createdUser = userRepository.save(user);
 
-// }
+        return createdUser;
+
+    }
+
+}
